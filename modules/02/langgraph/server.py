@@ -97,7 +97,26 @@ class ElectrifyMCPServer:
                 # - inputSchema with properties:
                 #   - customer_username (string): The customer username to retrieve bills for
                 #   - limit (integer, default 100): Limit number of results
+                Tool(
+                    name="get_bills",
+                    description="Retrieve the latest bills for the indicated customer",
+                    inputSchema={
+                        "type": "object",
+                        "properties": {
+                            "customer_username": {
+                                "type": "string",
+                                "description": "The customer username to retrieve bills for"
+                            },
+                            "limit": {
+                                "type": "integer",
+                                "description": "Limit number of results",
+                                "default": 100
+                            }
+                        }
+                    }
+                )
             ]
+
         
         @self.server.call_tool()
         async def handle_call_tool(name: str, arguments: Dict[str, Any]) -> Sequence[TextContent]:
