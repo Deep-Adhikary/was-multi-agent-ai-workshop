@@ -1,0 +1,23 @@
+2026-04-22 14:13:38,804 - electrify-agent - INFO - Starting application
+2026-04-22 14:13:38,804 - electrify-agent - INFO - Initializing Application...
+2026-04-22 14:13:38,805 - electrify-agent - INFO - System prompt loaded: 2737 characters
+2026-04-22 14:13:38,805 - electrify-agent - INFO - Setting up agent...
+2026-04-22 14:13:39,536 - electrify-agent - INFO - LLM initialized
+2026-04-22 14:13:40,430 - electrify-agent - INFO - Retrieved 3 MCP tools
+2026-04-22 14:13:40,430 - electrify-agent - WARNING - Falling back to InMemorySaver (no persistence): invalid percent-encoded token: "%>jZ3!J6w-"
+
+2026-04-22 14:13:40,440 - electrify-agent - INFO - Agent setup complete
+2026-04-22 14:13:58,901 - electrify-agent - INFO - Query: who the hell are you
+2026-04-22 14:14:28,587 - electrify-agent - INFO - Query: What are the available rate plans?
+2026-04-22 14:14:48,145 - electrify-agent - INFO - Query: Get my customer information
+2026-04-22 14:15:07,781 - electrify-agent - INFO - Query: Show me my recent bills
+2026-04-22 14:16:06,811 - electrify-agent - INFO - Starting application
+2026-04-22 14:16:06,811 - electrify-agent - INFO - Initializing Application...
+2026-04-22 14:16:06,811 - electrify-agent - INFO - System prompt loaded: 2737 characters
+2026-04-22 14:16:06,811 - electrify-agent - INFO - Setting up agent...
+2026-04-22 14:16:07,185 - electrify-agent - INFO - LLM initialized
+2026-04-22 14:16:07,955 - electrify-agent - INFO - Retrieved 3 MCP tools
+2026-04-22 14:16:07,956 - electrify-agent - WARNING - Falling back to InMemorySaver (no persistence): invalid percent-encoded token: "%>jZ3!J6w-"
+
+2026-04-22 14:16:07,966 - electrify-agent - INFO - Agent setup complete
+2026-04-22 14:16:18,490 - electrify-agent - INFO - Query: can you list my last three prompts

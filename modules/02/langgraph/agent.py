@@ -160,7 +160,6 @@ def getDateTime() -> str:
   """
   return str(datetime.now().astimezone().isoformat())
 
-
 @tool(parse_docstring=True)
 def calculateSavings(current_rate: float, new_rate: float, monthly_kwh: float) -> str:
   """Calculate potential monthly savings when switching electricity rate plans.
@@ -173,15 +172,12 @@ def calculateSavings(current_rate: float, new_rate: float, monthly_kwh: float) -
   Returns:
     str: A formatted message showing the monthly and annual savings
   """
-  # TODO: Implement this method
-  # Requirements:
-  # 1. Calculate current monthly cost: current_rate * monthly_kwh / 100
-  # 2. Calculate new monthly cost: new_rate * monthly_kwh / 100
-  # 3. Calculate monthly savings: current_cost - new_cost
-  # 4. Calculate annual savings: monthly_savings * 12
-  # 5. Return a formatted string with the results
-  pass
-
+  current_cost = (current_rate * monthly_kwh) / 100
+  new_cost = (new_rate * monthly_kwh) / 100
+  monthly_savings = current_cost - new_cost
+  annual_savings = monthly_savings * 12
+  
+  return f"Switching from {current_rate}¢/kWh to {new_rate}¢/kWh with {monthly_kwh} kWh monthly usage:\n- Monthly savings: ${monthly_savings:.2f}\n- Annual savings: ${annual_savings:.2f}"
 
 
 # Implement the agentic AI application experience
@@ -255,8 +251,8 @@ class Application:
         # Wrap MCP tools for Bedrock compatibility and add custom tools
         all_tools = [wrap_tool_for_bedrock(t) for t in mcp_tools]
         all_tools.append(getDateTime)
-        # TODO: Add calculateSavings tool to the list after implementing it
-
+        # DONE: Add calculateSavings tool to the list after implementing it
+        all_tools.append(calculateSavings)
         # Set up checkpointer with PostgreSQL for persistence across restarts
         try:
             conn_string = f"postgresql://{os.getenv('PGUSER')}:{os.getenv('PGPASSWORD')}@{os.getenv('PGHOST')}/postgres"
@@ -271,7 +267,13 @@ class Application:
 
         # Create agent with middleware for Bedrock compatibility
         # TODO: Call create_agent with the appropriate parameters
-        self.agent = ???
+        self.agent = create_agent(
+          model=self.llm,
+          tools=all_tools,
+          system_prompt=self.system_prompt,
+          checkpointer=checkpointer,
+          middleware=[sanitize_messages_middleware, sanitize_tool_output]
+        )
         logger.info("Agent setup complete")
 
       except Exception as e:
