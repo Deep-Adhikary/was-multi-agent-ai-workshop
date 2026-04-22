@@ -477,14 +477,22 @@ def create_histogram(data: str, column: str, bins: int = 10, title: str = "Histo
         y_label: Y-axis label (default: "Frequency")
     """
     try:
-        # TODO: Implement the histogram creation
-        # 1. Parse the CSV data into a pandas DataFrame using pd.read_csv(StringIO(data))
-        # 2. Create a matplotlib figure and axis with figsize=(10, 6)
-        # 3. Create a histogram using ax.hist() with the specified column and bins
-        # 4. Set the title, x-label, and y-label
-        # 5. Apply tight_layout()
-        # 6. Return the chart using create_matplotlib_chart_image()
-        pass
+        df = pd.read_csv(StringIO(data))
+        
+        # Create matplotlib chart
+        fig, ax = plt.subplots(figsize=(10, 6))
+        ax.hist(df[column], bins=bins, edgecolor='black', alpha=0.7)
+        ax.set_title(title)
+        ax.set_xlabel(x_label or column)
+        ax.set_ylabel(y_label)
+        plt.tight_layout()
+        
+        return create_matplotlib_chart_image(
+            fig, 
+            chart_type="histogram", 
+            save_to_file=_chart_config["save_to_file"], 
+            output_dir=_chart_config["output_dir"]
+        )
         
     except Exception as e:
         return f"Error creating histogram: {str(e)}"
@@ -578,8 +586,9 @@ Charts are generated using matplotlib and saved as PNG files. Always explain you
                 create_scatter_plot,
                 create_pie_chart,
                 analyze_data_structure,
-                get_datetime
-                # TODO: Add create_histogram to the list after implementing it
+                get_datetime,
+                # DONE: Add create_histogram to the list after implementing it
+                create_histogram
             ]
 
             # Load and configure MCP servers from YAML
