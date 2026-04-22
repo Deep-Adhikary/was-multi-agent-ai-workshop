@@ -1,7 +1,6 @@
 import { useState, useContext, useRef, useEffect } from 'react';
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts';
 import { apiGetMetrics, apiGetBilling, apiGetInvoice } from '../logic/apis.js';
-import { ChatAssistant } from './ChatAssistant.jsx';
 import { CustomerContext } from './contexts.js';
 
 const CHART_COLORS = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'];
@@ -96,6 +95,16 @@ export const Dashboard = () => {
             )}
           </div>
 
+          {/* Planning link */}
+          <div className="rounded-lg border border-border bg-card p-6">
+            <h2 className="text-lg font-semibold text-card-foreground mb-2">Planning to buy a new appliance?</h2>
+            <a href="#/" className="text-blue-500 hover:underline underline-offset-4 text-sm">Estimate impact on your bill</a>
+            <p className="text-xs text-muted-foreground mt-1">Estimate the impact your new investment will have on your electricity usage, and monthly bill.</p>
+          </div>
+        </div>
+
+        {/* Right Column */}
+        <div className="space-y-6">
           {/* Latest Bill Card */}
           <div className="rounded-lg border border-border bg-card p-6">
             <h2 className="text-lg font-semibold text-card-foreground mb-4">Your latest bill</h2>
@@ -146,31 +155,13 @@ export const Dashboard = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div className="grid grid-cols-2 gap-4">
-            <a href="#/" className="rounded-lg border border-border bg-card p-5 hover:bg-secondary/50 transition-colors no-underline group">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="h-9 w-9 rounded-lg bg-blue-500/10 flex items-center justify-center">
-                  <svg className="h-5 w-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
-                </div>
-                <h3 className="font-medium text-sm text-foreground">New appliance?</h3>
-              </div>
-              <p className="text-xs text-muted-foreground">Estimate the impact on your bill</p>
-            </a>
-            <a href="#/" className="rounded-lg border border-border bg-card p-5 hover:bg-secondary/50 transition-colors no-underline group">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="h-9 w-9 rounded-lg bg-emerald-500/10 flex items-center justify-center">
-                  <svg className="h-5 w-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
-                </div>
-                <h3 className="font-medium text-sm text-foreground">Need help?</h3>
-              </div>
-              <p className="text-xs text-muted-foreground">Payment options and support programs</p>
-            </a>
+          {/* Help link */}
+          <div className="rounded-lg border border-border bg-card p-6">
+            <h2 className="text-lg font-semibold text-card-foreground mb-2">Need help paying your bill?</h2>
+            <a href="#/" className="text-blue-500 hover:underline underline-offset-4 text-sm">Discover options and support programs</a>
+            <p className="text-xs text-muted-foreground mt-1">The payment support portal offers a variety of payment options and programs you might qualify for to help keep the lights on.</p>
           </div>
         </div>
-
-        {/* Right Column: Chat */}
-        <ChatAssistant />
       </div>
 
       {/* Invoice Detail */}
