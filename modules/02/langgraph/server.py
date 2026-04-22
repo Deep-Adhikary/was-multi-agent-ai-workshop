@@ -191,14 +191,15 @@ class ElectrifyMCPServer:
         )]
     
     async def _get_bills(self, arguments: Dict[str, Any]) -> Sequence[TextContent]:
-        # TODO: Complete this method
-        # Requirements:
-        # 1. Create a SQL query to retrieve billing information
-        # 2. Extract parameters from arguments
-        # 3. Execute query and return formatted results
+        base_query = "SELECT DISTINCT TO_CHAR(i.bill_date, 'YYYY-MM-DD') AS sorter, i.invoice_no, i.customer_id, TO_CHAR(i.bill_date, 'MM/DD/YYYY') AS bill_date, TO_CHAR(i.due_date, 'MM/DD/YYYY') AS due_date, i.invoice_amount FROM invoices i INNER JOIN customers c ON c.customer_id = i.customer_id WHERE c.customer_username = %s::text ORDER BY sorter DESC LIMIT %s::INTEGER;"
+        parameters = []
+        param_count = 0
         
-        base_query = ""  # TODO: Write your SQL query here
-        parameters = []  # TODO: Add parameters here
+        parameters.append(arguments.get("customer_username", 0))
+        param_count += 1
+
+        parameters.append(arguments.get("limit", 100))
+        param_count += 1
         
         results = await self._execute_query(base_query, parameters)
         
@@ -206,6 +207,7 @@ class ElectrifyMCPServer:
             type="text",
             text=json.dumps(results, indent=2, default=str)
         )]
+
 
 async def main():
     """Main entry point for the MCP server."""
