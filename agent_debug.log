@@ -21,3 +21,15 @@
 
 2026-04-22 14:16:07,966 - electrify-agent - INFO - Agent setup complete
 2026-04-22 14:16:18,490 - electrify-agent - INFO - Query: can you list my last three prompts
+2026-04-22 14:47:30,611 - electrify-agent - INFO - Initializing Application...
+2026-04-22 14:47:30,612 - electrify-agent - INFO - System prompt loaded: 2738 characters
+2026-04-22 14:47:30,612 - electrify-agent - INFO - Setting up agent...
+2026-04-22 14:47:30,620 - electrify-agent - INFO - LLM initialized
+2026-04-22 14:47:31,426 - electrify-agent - INFO - Retrieved 3 MCP tools
+2026-04-22 14:47:31,426 - electrify-agent - WARNING - Falling back to InMemorySaver (no persistence): invalid percent-encoded token: "%>jZ3!J6w-"
+
+2026-04-22 14:47:31,440 - electrify-agent - INFO - Agent setup complete
+2026-04-22 14:47:47,784 - electrify-agent - INFO - Query: What rate plans are available?
+2026-04-22 14:48:45,485 - electrify-agent - INFO - Query: What is my last month's bill?
+2026-04-22 14:49:23,557 - electrify-agent - INFO - Query: Based on my usage patterns, can you suggest a better rate plan? Show me my usage by time of day to help determine which rate plan would be most cost-effective.
+2026-04-22 14:50:21,565 - electrify-agent - INFO - Query: Show me my last 6 months of bills with amounts and dates

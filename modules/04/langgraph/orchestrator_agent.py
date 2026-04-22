@@ -150,12 +150,17 @@ Always explain what you're doing and why you're using specific agents."""
             logger.info("Using InMemorySaver for conversation state")
 
             # Create orchestrator agent
-            # TODO: Call create_react_agent with the appropriate parameters
-            self.agent = ???
+            # DONE: Call create_react_agent with the appropriate parameters
+            self.agent = create_agent(
+                model=self.llm,
+                tools=tools,
+                system_prompt=self.system_prompt,
+                checkpointer=checkpointer
+            )
             
             # Configure recursion limit
-            # TODO: Set the recursion_limit to 50 in the agent_config
-            ???
+            # Done: Set the recursion_limit to 50 in the agent_config
+            self.agent_config["configurable"]["recursion_limit"] = 50
             logger.info("Orchestrator agent setup complete")
 
         except Exception as e:
